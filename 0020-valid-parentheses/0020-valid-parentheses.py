@@ -14,7 +14,7 @@ class Solution:
         }
         
         for cur_char in s:
-            if cur_char in set(possibilities.values()):
+            if cur_char in '])}':
                 if stack == []:
                     return False
                 
