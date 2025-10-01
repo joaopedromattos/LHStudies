@@ -10,10 +10,7 @@ class Solution:
 
             if nums1[i] < nums2[j]:
                 i+=1
-                continue
-            
-            if nums2[j] < nums1[i]:
+            else:
                 j+=1
-                continue
 
         return -1
