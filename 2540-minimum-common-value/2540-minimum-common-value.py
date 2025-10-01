@@ -2,9 +2,18 @@
 # O(N + M + logN) -> O(N)
 class Solution:
     def getCommon(self, nums1: List[int], nums2: List[int]) -> int:
-        intersection = set(nums1).intersection(set(nums2))
-        nums = list(intersection)
-        if nums == []:
-            return -1
+        i, j = 0, 0
+        
+        while i < len(nums1) and j < len(nums2):
+            if nums1[i] == nums2[j]:
+                return nums1[i]
+
+            if nums1[i] < nums2[j]:
+                i+=1
+                continue
             
-        return list(sorted(nums))[0]
+            if nums2[j] < nums1[i]:
+                j+=1
+                continue
+
+        return -1
