@@ -1,16 +1,36 @@
-# Solution 2: 
+'''
+[-3, -2, 1, -1] -> [2, 1]
+
+S => [0, -3, -1, 0, -1] -> [start, end) -> [_ , 3 or 0]
+
+max S[i] and lowest S[j] s.t. j <= i
+
+Time O(N) -> Space O(N)
+
+
+[0, -2, -3]
+
+'''
+
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
-        max_sum = nums[0]
-        cur_sum = 0
         
-        for n in nums:
-            # If our current sum is negative,
-            # We can just ignore this prefix
-            if cur_sum < 0:
-                cur_sum = 0
-                
-            cur_sum += n # We are gonna take the current element and face the consequences
-            max_sum = max(max_sum, cur_sum)
-        return max_sum
+        n = len(nums)
+
+        if n < 2:
+            return sum(nums)
+
+        S = [0 for i in range(n + 1)]
+        for i in range(1, n + 1): 
+            S[i] = nums[i - 1] + S[i - 1]
+
+        max_value, min_value = S[1], S[1]
+
+        min_value = inf
+        for i in range(n):
+            min_value = min(S[i], min_value)
+
+            max_value = max(max_value, S[i + 1] - min_value)
+
+        return max_value
         
