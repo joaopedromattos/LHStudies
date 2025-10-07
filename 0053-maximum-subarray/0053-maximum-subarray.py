@@ -24,9 +24,7 @@ class Solution:
         for i in range(1, n + 1): 
             S[i] = nums[i - 1] + S[i - 1]
 
-        max_value, min_value = S[1], S[1]
-
-        min_value = inf
+        max_value, min_value = -inf, inf
         for i in range(n):
             min_value = min(S[i], min_value)
 
