@@ -1,46 +1,43 @@
-from collections import defaultdict
-
 class Trie:
 
     def __init__(self):
-        self.trie = dict()
+        self.trie = {}
+        
 
     def insert(self, word: str) -> None:
-        
         cur_trie = self.trie
-        for i in range(1, len(word) + 1):
-            if not (word[:i] in cur_trie):
-                cur_trie[word[:i]] = dict()
+        for i in word:
+            if i not in cur_trie:
+                cur_trie[i] = {}
             
-            cur_trie = cur_trie[word[:i]]
+            cur_trie = cur_trie[i]
 
         cur_trie['_exists'] = True
-
         
+
     def search(self, word: str) -> bool:
         cur_trie = self.trie
-        for i in range(1, len(word) + 1):
-            if word[:i] in cur_trie:
-                cur_trie = cur_trie[word[:i]]
-            else:
+        for i in word:
+            if i not in cur_trie:
                 return False
+            
+            cur_trie = cur_trie[i]
 
-        if '_exists' in cur_trie:
-            return True
-
-        else:
-            return False
+        return '_exists' in cur_trie
         
 
     def startsWith(self, prefix: str) -> bool:
         cur_trie = self.trie
-        for i in range(1, len(prefix) + 1):
-            if prefix[:i] in cur_trie:
-                cur_trie = cur_trie[prefix[:i]]
-            else:
+        for i in prefix:
+            if i not in cur_trie:
                 return False
+            
+            cur_trie = cur_trie[i]
 
         return True
+
+
+        
 
 
 # Your Trie object will be instantiated and called as such:
