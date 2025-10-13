@@ -35,7 +35,7 @@ node 1:
 Time O(N) -> Space O(N)
 '''
 
-
+# First solution -> "Naive" -> O(N) / O(N)
 class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
 
@@ -58,5 +58,41 @@ class Solution:
 
         return newList
 
+
+# Second solution - O(N) -> O(1) ("Two pointers")
+'''
+1 --> 2 --> 3
+
+cur = 1
+prev = None 
+new = cur.next (2)
+
+new = cur.next
+cur.next = prev
+prev = cur
+cur = new
+'''
+class Solution:
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+
+        if not head:
+            return None
+
+        prev = None
+        curNode = head
+        while curNode:
+            
+            newNode = curNode.next
+
+            # this is inverting the "direction"
+            # of the pointer / edge
+            curNode.next = prev
+            prev = curNode
+
+            curNode = newNode
+
+        head = prev
+
+        return head
         
 
