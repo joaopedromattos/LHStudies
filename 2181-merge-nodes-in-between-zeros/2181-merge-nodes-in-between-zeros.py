@@ -34,7 +34,6 @@ class Solution:
             return head
 
         cur = head.next
-        cur.next = head.next.next
         while cur:
             # [1, 2, 3, 0, 4, 5, 0]
 
