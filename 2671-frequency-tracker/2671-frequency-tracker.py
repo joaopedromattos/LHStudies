@@ -30,23 +30,23 @@ class FrequencyTracker:
 
     def __init__(self):
         self.tracker = defaultdict(int)
-        self.freq_tracker = defaultdict(set)
+        self.freq_tracker = defaultdict(int)
         
 
     def add(self, number: int) -> None:
         if self.tracker[number]:
-            self.freq_tracker[self.tracker[number]].remove(number)
+            self.freq_tracker[self.tracker[number]] -= 1
         self.tracker[number] += 1
-        self.freq_tracker[self.tracker[number]].add(number)
+        self.freq_tracker[self.tracker[number]] += 1
         
 
     def deleteOne(self, number: int) -> None:
         if number in self.tracker:
-            self.freq_tracker[self.tracker[number]].remove(number)
+            self.freq_tracker[self.tracker[number]] -= 1
             self.tracker[number] -= 1
 
             if self.tracker[number]:
-                self.freq_tracker[self.tracker[number]].add(number)
+                self.freq_tracker[self.tracker[number]] += 1
 
             if not self.tracker[number]:
                 # Update tracker to say "not present"
@@ -55,7 +55,7 @@ class FrequencyTracker:
         
 
     def hasFrequency(self, frequency: int) -> bool:
-        return self.freq_tracker[frequency] != set()
+        return self.freq_tracker[frequency] > 0
         
 
 
