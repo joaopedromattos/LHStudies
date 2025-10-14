@@ -36,16 +36,15 @@ class Solution:
         even = even_begin
 
         while even.next and odd.next:
-            print(even.val, odd.val)
+            
+            odd.next = odd.next.next
             if odd.next:
-                odd.next = odd.next.next
-                if odd.next:
-                    odd = odd.next
+                odd = odd.next
 
+
+            even.next = even.next.next
             if even.next:
-                even.next = even.next.next
-                if even.next:
-                    even = even.next
+                even = even.next
 
         odd.next = even_begin
 
