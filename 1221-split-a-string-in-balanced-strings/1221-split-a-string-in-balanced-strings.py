@@ -29,12 +29,11 @@ class Solution:
     def balancedStringSplit(self, s: str) -> int:
 
         if not s:
-            return []
+            return 0
 
         c = 0
-        cut = 0
         memory = 0
-        ans = []
+        ans = 0
         while c < len(s):
             if s[c] == 'R':
                 memory += 1
@@ -43,10 +42,8 @@ class Solution:
 
             if memory == 0:
                 # substring is balanced
-                ans.append(s[cut:c + 1])
-                cut = c + 1
-
+                ans += 1
             c+=1
 
-        return len(ans)
+        return ans
         
