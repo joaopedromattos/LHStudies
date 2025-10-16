@@ -28,14 +28,16 @@ Space(1)
 class Solution:
     def largestOddNumber(self, num: str) -> str:
         last_odd_number_idx = -1
-        for i in range(len(num)):
+        for i in range(len(num)-1, -1, -1):
             if int(num[i]) % 2 != 0:
-                last_odd_number_idx = i
-        
-        if last_odd_number_idx == -1:
-            return ""
+                return num[:i + 1]
 
-        return num[:last_odd_number_idx + 1]
+        return ""
+        
+        # if last_odd_number_idx == -1:
+        #     return ""
+
+        # return num[:last_odd_number_idx + 1]
 
 
         
