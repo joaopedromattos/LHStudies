@@ -94,9 +94,8 @@ if not h
 
 '''
 
-# [3, 2, 1]
-# m1 = 3, m2 = 3
-
+# Solution below is terrible...
+# See solution 2
 class Solution:
     def fillCups(self, amount: List[int]) -> int:
         
@@ -126,6 +125,22 @@ class Solution:
             c, w, h = get_trip([c, w, h])
             print("Waters", c, w, h)
             trips += 1
+
+        return trips
+
+
+class Solution:
+    def fillCups(self, amount: List[int]) -> int:
+        trips = 0
+        waters = list(sorted(amount))
+        while waters[-1]:
+            if waters[1] == 0: return trips + waters[2]
+
+            waters[1] -=1
+            waters[2] -=1
+            
+            trips += 1
+            waters.sort()
 
         return trips
 
