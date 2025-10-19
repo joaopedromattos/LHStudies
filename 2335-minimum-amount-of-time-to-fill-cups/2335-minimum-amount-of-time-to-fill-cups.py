@@ -53,8 +53,10 @@ w
 Principle: 
 - Combine trips with the most requested water types, and readjust as you go.
     - Every water cup is like a priority queue
-        - At a given timestamp t: take cups with highest "backlog" to prevent single wataer type accumulation at the end.
+        - At a given timestamp t: take cups with highest "backlog" to prevent single water type accumulation at the end.
         - Every time the water cup is carried, diminish priority.
+
+- Since the number of types of water is very small, you can either sort or maintain a data structure.
 
 
 Time: O(M) -> M the water cup type in highest demand.
