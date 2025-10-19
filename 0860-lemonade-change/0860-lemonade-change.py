@@ -23,6 +23,11 @@ Test 2
 5 => [0, 0, 1] -> Change to give -> 15 (Return True)
 
 
+Demonstration 
+-> For the ith customer, we always give the highest bill we have for change, until you have no more the highest bill.
+-> You add the change to your balance, so that you can give change to i+1-th customer.
+
+
 Algo
 Change = [0, 0, 0]
 - for i-th customer:
