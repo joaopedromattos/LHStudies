@@ -7,6 +7,12 @@ Test cases:
 'RLLLRLLRRR' -> RL, LLRLLRRR
 'LLRLRR' -> LLRLRR
 
+
+Demonstration:
+- String are always balanced.
+- If you just count the number of L/Rs that passed, it is guaranteed, there will be the same amount of L/Rs later.
+- The maximum number will be to *always* unpack substrings of balanced strings -> because the minimum is always the string itself.
+
 Algo:
 -> memory = 0
 -> strs = []
