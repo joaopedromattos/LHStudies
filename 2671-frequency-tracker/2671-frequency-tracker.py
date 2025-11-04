@@ -25,37 +25,30 @@ hasFrequency -> O(n) / O(1) amortized -> N is the number of items in the diction
 
 '''
 
-from collections import defaultdict
 class FrequencyTracker:
-
     def __init__(self):
-        self.tracker = defaultdict(int)
-        self.freq_tracker = defaultdict(int)
+        self.counter = defaultdict(int)
+        self.freq_counter = defaultdict(int)
         
-
-    def add(self, number: int) -> None:
-        if self.tracker[number]:
-            self.freq_tracker[self.tracker[number]] -= 1
-        self.tracker[number] += 1
-        self.freq_tracker[self.tracker[number]] += 1
+    def add(self, number:int): 
+        if self.counter[number]:
+            self.freq_counter[self.counter[number]] -= 1
+        self.counter[number] += 1
+        self.freq_counter[self.counter[number]] += 1
         
-
-    def deleteOne(self, number: int) -> None:
-        if number in self.tracker:
-            self.freq_tracker[self.tracker[number]] -= 1
-            self.tracker[number] -= 1
-
-            if self.tracker[number]:
-                self.freq_tracker[self.tracker[number]] += 1
-
-            if not self.tracker[number]:
-                # Update tracker to say "not present"
-                # as soon as we do not have the number anymore.
-                del self.tracker[number]
-        
-
-    def hasFrequency(self, frequency: int) -> bool:
-        return self.freq_tracker[frequency] > 0
+    def deleteOne(self, number:int):
+        if number in self.counter:
+            self.freq_counter[self.counter[number]] -= 1
+            self.counter[number] -= 1
+            
+            if self.counter[number]:
+                self.freq_counter[self.counter[number]] += 1
+            
+            if not self.counter[number]:
+                del self.counter[number]
+                
+    def hasFrequency(self, number:int):
+        return self.freq_counter[number] > 0
         
 
 
