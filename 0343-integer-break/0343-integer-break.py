@@ -11,7 +11,7 @@ n = 7
 
 
 F(n = 7)
-prod([1, F(7 - 1)]) -> prod([1, F(6 - 1)])
+prod([1, F(7 - 1)]) -> prod([1, [1, F(6 - 1)]]) -> prod([1, [1, [1, F(5 - 1)]]])
 prod([2, F(7 - 2)])
 prod([3, F(7 - 3)])
 ...
@@ -21,7 +21,9 @@ Principle: Product between the "current number", and the subproblem correspondin
 
 Algo:
     i in 1...number - 1
-        max(prod([i, dp(number - i)]))
+        Choice 1: Break the number [i * f(number - i)]
+        Choice 2: Dont break the number i * (number - i)
+
 
 Time O(N ** N) -> w/ Memoization O(N ** 2)
 Space O(1) -> W/ Memoization O(N ** 2)
