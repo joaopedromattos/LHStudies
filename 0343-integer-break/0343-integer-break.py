@@ -33,16 +33,17 @@ from math import prod
 class Solution:
     def integerBreak(self, n: int) -> int:
 
+        @cache
         def dp(number):
-            if n == 0:
+            if number == 0:
                 return 0
 
             if number == 1:
                 return 1
 
             max_product = 0
-            for i in range(number):
-                max_product = max(max_product, prod([i, dp(number - i)]))
+            for i in range(1, number):
+                max_product = max(max_product, i * (number - i), prod([i, dp(number - i)]))
 
             return max_product
             
