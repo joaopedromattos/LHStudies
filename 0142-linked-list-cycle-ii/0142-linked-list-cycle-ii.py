@@ -30,19 +30,47 @@ Time: O(N) Space: O(N)
 #         self.val = x
 #         self.next = None
 
+# class Solution:
+#     def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
+
+#         cycle_index = 0
+#         pointers = set()
+#         cur_pointer = head
+#         while cur_pointer and not (cur_pointer in pointers):
+#             pointers.add(cur_pointer)
+#             cur_pointer = cur_pointer.next
+#             cycle_index += 1
+        
+#         if not cur_pointer:
+#             return None
+        
+#         return cur_pointer
+
+
+
+# Floyd's algo:
+
 class Solution:
     def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
 
-        cycle_index = 0
-        pointers = set()
-        cur_pointer = head
-        while cur_pointer and not (cur_pointer in pointers):
-            pointers.add(cur_pointer)
-            cur_pointer = cur_pointer.next
-            cycle_index += 1
-        
-        if not cur_pointer:
+        if not head or not head.next:
             return None
+
+        slow = fast = head
+        while fast != None and fast.next != None:
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast:
+                break
+
+        if slow != fast:
+            return None
+
+        slow = head
+        while slow != fast:
+            slow = slow.next
+            fast = fast.next
+
+        return slow
         
-        return cur_pointer
         
