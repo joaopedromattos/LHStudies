@@ -34,7 +34,7 @@ class Solution:
 
         while explore:
             pos, cur_dices = explore.popleft()
-            print(pos, dices)
+            # print(pos, dices)
 
             for i in range(1, 7):
                 next_pos = min(pos + i, len(new_board) - 1)
