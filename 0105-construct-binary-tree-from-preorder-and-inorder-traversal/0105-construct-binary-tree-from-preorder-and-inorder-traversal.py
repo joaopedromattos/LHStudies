@@ -47,24 +47,24 @@ class Solution:
 
             new_node.val = preorder[i]
 
-            
+            node = stack[-1]
+            # print(node)
 
-            if not node.left:
+            if node.val != inorder[j]:
                 node.left = new_node
-                node = node.left
+                stack.append(node.left)
             else:
-                node.right = new_node
-                node = node.right
+                # print(stack)
+                while stack and stack[-1].val == inorder[j]:
+                    # print("Emptying stack", stack[-1].val)
+                    node = stack.pop()
+                    j += 1
 
-            stack.append(node)
+                node.right = new_node
+                stack.append(node.right)
 
             i+=1
-            # print(stack)
-            while stack and stack[-1].val == inorder[j]:
-                # print("Emptying stack", stack[-1].val)
-                node = stack.pop()
-                j += 1
-
+           
         return root
 
             
