@@ -52,9 +52,5 @@ class Solution:
                         dist[next_state] = cost + 1
                         explore.append((next_state, cost + 1))
 
-        if target in dist:
-            return dist[target]
-        else:
-            return -1
-
+        return -1
         
