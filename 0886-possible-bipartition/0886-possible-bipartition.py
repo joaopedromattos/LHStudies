@@ -32,24 +32,24 @@ class Solution:
             G[u].append(v)
             G[v].append(u)
 
-        vis = [False] * (n + 1)
-        def components_starts(G, cur):
-            nonlocal vis
-            vis[cur] = True
-            for neigh in G[cur]:
-                if not vis[neigh]:
-                    components_starts(G, neigh)
+        # vis = [False] * (n + 1)
+        # def components_starts(G, cur):
+        #     nonlocal vis
+        #     vis[cur] = True
+        #     for neigh in G[cur]:
+        #         if not vis[neigh]:
+        #             components_starts(G, neigh)
 
-        starts = []
-        for i in range(1, n + 1):
-            if not vis[i]:
-                starts.append((i, 0))
-                components_starts(G, i)
+        # starts = []
+        # for i in range(1, n + 1):
+        #     if not vis[i]:
+        #         starts.append((i, 0))
+        #         components_starts(G, i)
 
 
         # BFS
-        vis = [False] * (n + 1)
-        explore = deque(starts)
+        vis = set()
+        explore = deque([(1, 0)])
         partition = {0:set(), 1:set()}
 
         def opposite_partition(partition_value):
@@ -59,10 +59,16 @@ class Solution:
                 return 1
 
         
-        while explore:
+        while explore or len(vis) < n:
+
+            if len(explore) == 0:
+                for i in range(1, n + 1):
+                    if i not in vis:
+                        explore.append((i, 0))
+                        break
 
             cur_node, cur_partition = explore.popleft()
-            vis[cur_node] = True
+            vis.add(cur_node)
 
             for neighbor in G[cur_node]:
                 if neighbor in partition[cur_partition]:
@@ -71,7 +77,7 @@ class Solution:
                 neigh_partition = opposite_partition(cur_partition)
                 partition[neigh_partition].add(neighbor)
 
-                if not vis[neighbor]:
+                if not neighbor in vis:
                     explore.append((neighbor, neigh_partition))
 
         return True
