@@ -1,48 +1,80 @@
 '''
-[[10, 15], [20, 25]] -> book([11, 16]) 
-
---- 
-
-[[10, 15], [20, 25], [11, 16]] -> sort(key=start_time)
-[[10, 15], [11, 16], [20, 25]] -> double_booking=True
 
 
-Time : O(N + NlogN) Space : O(N) (Not considering the original events) / O(2 * N) (Considering the original events)
+Attr events : List[(start1, end1), (start2, end2), ...]
+
+start1, end1 < start2, end2
+end1 < end2
+
+book() (method)
+In: Event = (start, end), Out: Bool (True => no overlap, False => Overlap -- we are not free)
+
+
+events = [(1, 2), (3, 4), (7,8)], event = (5, 6)
+1. Find latest index our event can start AND finish to be stored
+2. Check overlap
+    If not:
+        insert event
+        return True
+    else:
+        return False
+        
+events = [(7,8)], event = (5, 9) -> Edge case
+
+Time: O(N), Space: O(1)
+
+Binary search: Time O(logN), Space O(1)
 
 '''
-
-
 
 class MyCalendar:
 
     def __init__(self):
-        self.events = []
+        self._events = []
 
-    
-    def _doubleBooking(self, event:List):
-        events_clone = self.events[:]
+    def _checkOverlap(self, curEvent, newEvent):
+        if curEvent[0] <= newEvent[0] and newEvent[0] < curEvent[1]:
+            return True
 
-        events_clone.append(event)
+        if curEvent[0] < newEvent[1] and newEvent[1] < curEvent[1]:
+            return True
 
-        events_clone.sort(key=lambda x: x[0])
 
-        s, e = [events_clone[0][0]], [events_clone[0][1]]
-        for cur_start, cur_end in events_clone[1:]:
+        if newEvent[0] <= curEvent[0] and curEvent[0] < newEvent[1]:
+            return True
 
-            if cur_start >= s[-1] and cur_start < e[-1]:
-                return True
-            else:
-                s.append(cur_start)
-                e.append(cur_end)
+        if newEvent[0] < curEvent[1] and curEvent[1] < newEvent[1]:
+            return True
 
-        # No conflicts found!
-        self.events = events_clone
+            
 
         return False
-            
         
+
     def book(self, startTime: int, endTime: int) -> bool:
-        return not self._doubleBooking(event=[startTime, endTime])
+        
+        if not self._events:
+            self._events.append((startTime, endTime))
+            return True
+
+        events = []
+        # events = [(1, 2), (3, 4), (7,8)], event = (5, 6)
+        # print("ALL EVENTS -- ", self._events)
+        for idx, (start, end) in enumerate(self._events):
+            overlap = self._checkOverlap((start, end), (startTime, endTime))
+            # print(overlap, (start, end), (startTime, endTime))
+
+            if overlap:
+                return False
+
+        
+            
+        self._events.append((startTime, endTime))
+
+        return True
+
+
+    
         
 
 
