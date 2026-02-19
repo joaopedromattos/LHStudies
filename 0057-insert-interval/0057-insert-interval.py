@@ -1,46 +1,41 @@
+'''
+Principle: Adjacent sorted intervals overlapping can be merged. If no additional interval can be merged, we are done.
+
+
+'''
+
+
 class Solution:
     def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
 
-        if intervals == []:
+        if not intervals:
             return [newInterval]
 
-        def isOverLap(last_s, last_e, cur_s, cur_e):
-            print(last_s, last_e, cur_s, cur_e)
-            overlap = False
-            if cur_s <= last_s and cur_e >= last_e:
-                last_s = cur_s
-                overlap = True
+        def overlap(interval1, interval2):
+            case1 = interval1[0] <= interval2[0] <= interval1[1]
+            case2 = interval1[0] <= interval2[1] <= interval1[1]
+            case3 = interval2[0] <= interval1[0] and interval1[1] <= interval2[1]
 
-            if cur_s <= last_e and cur_e > last_e:
-                last_e = cur_e
-                overlap = True
+            return case1 or case2 or case3
 
-            if cur_e <= last_e:
-                last_e = last_e
-                overlap = True
-            print("Before return", overlap, last_s, last_e)
-            return overlap, last_s, last_e
-
-        # for i in range(len(intervals)):
-        #     _, intervals[i][0], intervals[i][1] = isOverLap(intervals[i][0], intervals[i][1], newInterval[0], newInterval[1])
-
-        intervals.append(newInterval)
-        intervals.sort(key=lambda x: x[0])
-
-        print("Intervals", intervals)
-        s, e = [intervals[0][0]], [intervals[0][1]]
-        for i in range(1, len(intervals)):
-            overlap, new_s, new_e = isOverLap(s[-1], e[-1], intervals[i][0], intervals[i][1])
-
-            if overlap:
-                s[-1] = new_s
-                e[-1] = new_e
-            else:
-                s.append(intervals[i][0])
-                e.append(intervals[i][1])
-
-        return list(zip(s, e))
-
+        def merge(interval1, interval2):
+            return [min(interval1[0], interval2[0]), max(interval1[1], interval2[1])]
 
         
+
+        intervals.append(newInterval)
+        intervals.sort(key = lambda x: x[0])
+
+        final_ans = [intervals[0]]
+
+
+        for cur_interval in intervals[1:]:
+            if overlap(final_ans[-1], cur_interval):
+                final_ans[-1] = merge(final_ans[-1], cur_interval)
+            else:
+                final_ans.append(cur_interval)
+
+        return final_ans
+
+
         
