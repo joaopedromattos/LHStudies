@@ -18,7 +18,7 @@ remove
 '''
 
 
-HASHTABLESIZE=100_000_000
+HASHTABLESIZE=100_000_00
 class MyHashMap:
     '''
     naive hash table
