@@ -103,7 +103,7 @@ class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
         coins = list(reversed(sorted(coins)))
 
-        # @cache
+        @cache
         def dp(cur_amount):
             nonlocal coins
 
