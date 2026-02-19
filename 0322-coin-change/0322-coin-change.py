@@ -34,35 +34,104 @@ O(Coins ** 2), Space: O(Coins * Amount)
 
 '''
 
-from functools import cache
+# from functools import cache
 
+# class Solution:
+#     def coinChange(self, coins: List[int], amount: int) -> int:
+        
+#         @cache
+#         def dp(cur_coin, amnt):
+#             # This subproblem has ended, no coins left to try
+#             if cur_coin >= len(coins):
+#                 if amnt == 0:
+#                     return 0
+#                 else:
+#                     return inf
+
+#             # This "subproblem" has ended. No coins needed.
+#             if amnt == 0:
+#                 return 0
+
+#             picked_coin = inf
+#             if amnt >= coins[cur_coin]:
+#                 picked_coin = dp(cur_coin, amnt - coins[cur_coin]) + 1
+            
+#             did_not_pick_coin = dp(cur_coin + 1, amnt)
+
+#             return min(picked_coin, did_not_pick_coin)
+
+#         min_coins = dp(0, amount)
+#         if min_coins == inf:
+#             return -1
+#         else:
+#             return min_coins
+
+
+
+
+
+'''
+In: coins List[Int], amount: Int
+
+-> Are the coins ordered? Yes
+-> How many coins do we have (in case we have to sort them)? -> Should small.
+
+
+[10, 5, 1], amount : 15
+1 - 10, 1 - 5 => 15
+3 - 5 => 15
+15 -> 1 => 15
+
+
+[10, 9, 3, 2], amount : 11
+1 - 10, 1 - 1 = 11
+1 - 9, 1 - 2 = 11
+
+[10, 9, 3, 2], amount : 11
+1 - 10, 1 - 1 = 11
+1 - 9, 1 - 2 = 11
+
+Principles
+Idea -> Try all possibilities and do DP to get the minimum.
+
+
+
+'''
+
+from functools import cache
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
-        
-        @cache
-        def dp(cur_coin, amnt):
-            # This subproblem has ended, no coins left to try
-            if cur_coin >= len(coins):
-                if amnt == 0:
-                    return 0
-                else:
-                    return inf
+        coins = list(reversed(sorted(coins)))
 
-            # This "subproblem" has ended. No coins needed.
-            if amnt == 0:
+        # @cache
+        def dp(cur_amount):
+            nonlocal coins
+
+            if cur_amount == 0:
                 return 0
 
-            picked_coin = inf
-            if amnt >= coins[cur_coin]:
-                picked_coin = dp(cur_coin, amnt - coins[cur_coin]) + 1
-            
-            did_not_pick_coin = dp(cur_coin + 1, amnt)
+            min_coins = inf
+            for coin in coins:
+                # print(cur_amount, coin)
+                if cur_amount >= coin:
+                    # print(cur_amount, "picking coin: ", coin, "remaining", cur_amount - coin)
+                    min_coins = min(min_coins, dp(cur_amount - coin) + 1)
 
-            return min(picked_coin, did_not_pick_coin)
+            return min_coins
 
-        min_coins = dp(0, amount)
+        min_coins = dp(amount)
+
         if min_coins == inf:
             return -1
         else:
             return min_coins
+
+            
+
+            
+
+        
+            
+
+        
         
