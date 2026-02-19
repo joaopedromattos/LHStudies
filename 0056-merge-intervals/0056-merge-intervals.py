@@ -1,34 +1,39 @@
+'''
+
+
+[[1, 3], [3, 12], [4, 8]] => [1, 3], [3, 12]
+
+
+[[1, 14], [3, 12], [4, 8]] => [1, 14]
+'''
+
 class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
-        
-        def check_overlap(last_s, last_e, cur_s, cur_e):
-            overlap = False
-            if cur_s <= last_s:
-                last_s = cur_s
-                overlap = True
-                
 
-            if cur_e >= last_e and cur_s <= last_e:
-                last_e = cur_e
-                overlap = True
+        if not intervals:
+            return []
 
-            if cur_e <= last_e:
-                last_e = last_e
-                overlap = True
+        def overlap(interval1, interval2):
+            case1 = interval1[0] <= interval2[0] <= interval1[1]
+            case2 = interval1[0] <= interval2[1] <= interval1[1]
+            case3 = interval2[0] <= interval1[0] and interval1[1] <= interval2[1]
+            return case1 or case2 or case3
 
-            return overlap, last_s, last_e
+        def merge(interval1, interval2):
+            return [min(interval1[0], interval2[0]), max(interval1[1], interval2[1])]
 
-        intervals.sort(key=lambda x: x[0])
+        intervals.sort(key = lambda x: x[0])
 
-        s, e = [intervals[0][0]], [intervals[0][1]]
-        for cur_s, cur_e in intervals[1:]:
-                
-            overlap, new_start, new_end = check_overlap(s[-1], e[-1], cur_s, cur_e)
+        final_ans = [[intervals[0][0], intervals[0][1]]]
 
-            if overlap:
-                s[-1], e[-1] = new_start, new_end
+        for cur_interval in intervals[1:]:
+            if overlap(final_ans[-1], cur_interval):
+                final_ans[-1] = merge(final_ans[-1], cur_interval)
             else:
-                s.append(cur_s)
-                e.append(cur_e)
+                final_ans.append(cur_interval)
+        
 
-        return list(zip(s, e))
+        return final_ans
+
+
+        
