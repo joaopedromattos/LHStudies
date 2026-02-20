@@ -1,28 +1,31 @@
+'''
+Intuition : Given a list of intervals that are "hard to schedule".
+Principle : An interval i will have priority over an interval j if i has less duration than j and finishes at the same time.
+
+- Sort intervals by the end.
+- Scan intervals and count how many intervals we can fit.
+- Compute how many we could not.
+
+
+'''
 
 
 class Solution:
-
     def eraseOverlapIntervals(self, intervals: List[List[int]]) -> int:
 
-        def isOverlap(last_s, last_e, cur_s, cur_e):
-            return cur_s < last_e
+        if not intervals:
+            return 0
 
-        remove = 0
-        intervals.sort(key=lambda x: x[1])
-        print("After first sort", intervals)
-        # intervals.sort(key=lambda x: x[1])
-        # print("After second sort", intervals)
+        intervals.sort(key = lambda x : x[1])
+        
+        count = 0
+        cur_end = -inf
+        for s, e in intervals:
 
-        s, e = [intervals[0][0]], [intervals[0][1]]
+            if s >= cur_end:
+                # This interval does not overlap.
+                count += 1
+                cur_end = e
 
-        for cur_s, cur_e in intervals[1:]:
-            if isOverlap(s[-1], e[-1], cur_s, cur_e):
-                remove += 1
-            else:
-                s.append(cur_s)
-                e.append(cur_e)
-
-
-        return remove
-
+        return len(intervals) - count
         
