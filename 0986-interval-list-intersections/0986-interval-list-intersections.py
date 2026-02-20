@@ -112,6 +112,8 @@ Space: O(N + M) N => Length list 1, M => Length list 2.
 
 
 
+
+
 '''
 In: List[List[Int, Int]], List[List[Int, Int]], Out: List[List[int, int]]
 
@@ -127,56 +129,79 @@ Principle: If all overlaps are in a sequence, we want to "resolve" all consecuti
 
 '''
 
-class Solution:
+# class Solution:
 
-    def intervalIntersection(self, firstList: List[List[int]], secondList: List[List[int]]) -> List[List[int]]:
+#     def intervalIntersection(self, firstList: List[List[int]], secondList: List[List[int]]) -> List[List[int]]:
 
-        def overlap(interval1, interval2):
-            '''
-            |----|
-              |----|
+#         def overlap(interval1, interval2):
+#             '''
+#             |----|
+#               |----|
 
-              |----|
-            |---|
+#               |----|
+#             |---|
 
-            |-----------|
-                |----|
+#             |-----------|
+#                 |----|
 
-            '''
-            s1, e1 = interval1
-            s2, e2 = interval2
+#             '''
+#             s1, e1 = interval1
+#             s2, e2 = interval2
 
-            case1 = s1 <= s2 and s2 <= e1
-            case2 = s2 <= s1 and s1 <= e2
-            case3 = s2 <= s1 and e1 <= e2
+#             case1 = s1 <= s2 and s2 <= e1
+#             case2 = s2 <= s1 and s1 <= e2
+#             case3 = s2 <= s1 and e1 <= e2
 
-            return case1 or case2 or case3
+#             return case1 or case2 or case3
 
 
-        def merge(interval1, interval2):
-            return (max(interval1[0], interval2[0]), min(interval1[1], interval2[1]))
+#         def merge(interval1, interval2):
+#             return (max(interval1[0], interval2[0]), min(interval1[1], interval2[1]))
 
             
+#         final_ans = []
+#         i, j = 0, 0
+#         while i < len(firstList) and j < len(secondList):
+
+#             if overlap(firstList[i], secondList[j]):
+#                 final_intersection = merge(firstList[i], secondList[j])
+#                 increment_i = final_intersection[1] == firstList[i][1]
+
+#                 final_ans.append(final_intersection)
+
+#                 if increment_i:
+#                     i += 1
+#                 else:
+#                     j += 1
+#             else:
+#                 if firstList[i][1] < secondList[j][1]:
+#                     i+=1
+#                 else:
+#                     j+=1
+
+#         return final_ans
+
+
+
+
+class Solution:
+    def intervalIntersection(self, firstList: List[List[int]], secondList: List[List[int]]) -> List[List[int]]:
+
         final_ans = []
         i, j = 0, 0
         while i < len(firstList) and j < len(secondList):
+            s = max(firstList[i][0], secondList[j][0])
+            e = min(firstList[i][1], secondList[j][1])
 
-            if overlap(firstList[i], secondList[j]):
-                final_intersection = merge(firstList[i], secondList[j])
-                increment_i = final_intersection[1] == firstList[i][1]
-
-                final_ans.append(final_intersection)
-
-                if increment_i:
-                    i += 1
-                else:
-                    j += 1
+            if s <= e:
+                final_ans.append([s, e])
+            
+            if firstList[i][1] <= secondList[j][1]:
+                i += 1
             else:
-                if firstList[i][1] < secondList[j][1]:
-                    i+=1
-                else:
-                    j+=1
+                j += 1
 
         return final_ans
+            
 
         
