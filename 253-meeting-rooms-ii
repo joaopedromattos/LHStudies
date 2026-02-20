@@ -1,0 +1,40 @@
+"""
+Definition of Interval:
+class Interval(object):
+    def __init__(self, start, end):
+        self.start = start
+        self.end = end
+"""
+
+'''
+
+Maximum amount of OVERLAPS => Count the overlaps.
+More than one overlap happening at the same time.
+    - Easy fix: Have a variable that count the "number of active meetings at given time".
+    - Increase variable every time a meeting starts (start of event).
+    - Decrease variable every time meeting ends (end of event)
+    -> Answer : Peak value of this variable
+
+'''
+
+class Solution:
+    def minMeetingRooms(self, intervals: List[Interval]) -> int:
+        events = []
+        for i in range(len(intervals)):
+            s, e = intervals[i].start, intervals[i].end
+            events.append((s, +1))
+            events.append((e, -1))
+
+
+        events.sort(key=lambda x: (x[0], x[1]))
+        print(events)
+        answer = 0
+        cur_meetings = 0
+        for event_type, d in events:
+            print(answer, cur_meetings, d)
+            cur_meetings += d
+            answer = max(answer, cur_meetings)
+
+
+        return answer
+            
