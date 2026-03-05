@@ -47,6 +47,9 @@ class Solution:
             if cur_max_effort != min_effort_gain[cur_pos]:
                 continue
 
+            if cur_pos == DESTINATION:
+                return min_effort_gain[DESTINATION]
+
             for di, dj in movements:
                 new_pos = (i + di, j + dj)
                 new_i, new_j = new_pos
