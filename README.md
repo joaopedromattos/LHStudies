@@ -8,6 +8,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | ------- | ------- |
 | [0739-daily-temperatures](https://github.com/joaopedromattos/LHStudies/tree/main/0739-daily-temperatures/) | Medium |
 | [1091-shortest-path-in-binary-matrix](https://github.com/joaopedromattos/LHStudies/tree/main/1091-shortest-path-in-binary-matrix/) | Medium |
+| [1631-path-with-minimum-effort](https://github.com/joaopedromattos/LHStudies/tree/main/1631-path-with-minimum-effort/) | Medium |
 ## Stack
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -33,8 +34,26 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [1091-shortest-path-in-binary-matrix](https://github.com/joaopedromattos/LHStudies/tree/main/1091-shortest-path-in-binary-matrix/) | Medium |
+| [1631-path-with-minimum-effort](https://github.com/joaopedromattos/LHStudies/tree/main/1631-path-with-minimum-effort/) | Medium |
 ## Matrix
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [1091-shortest-path-in-binary-matrix](https://github.com/joaopedromattos/LHStudies/tree/main/1091-shortest-path-in-binary-matrix/) | Medium |
+| [1631-path-with-minimum-effort](https://github.com/joaopedromattos/LHStudies/tree/main/1631-path-with-minimum-effort/) | Medium |
+## Binary Search
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [1631-path-with-minimum-effort](https://github.com/joaopedromattos/LHStudies/tree/main/1631-path-with-minimum-effort/) | Medium |
+## Depth-First Search
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [1631-path-with-minimum-effort](https://github.com/joaopedromattos/LHStudies/tree/main/1631-path-with-minimum-effort/) | Medium |
+## Union-Find
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [1631-path-with-minimum-effort](https://github.com/joaopedromattos/LHStudies/tree/main/1631-path-with-minimum-effort/) | Medium |
+## Heap (Priority Queue)
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [1631-path-with-minimum-effort](https://github.com/joaopedromattos/LHStudies/tree/main/1631-path-with-minimum-effort/) | Medium |
 <!---LeetCode Topics End-->
