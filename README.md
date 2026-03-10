@@ -22,6 +22,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 ## Linked List
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0002-add-two-numbers](https://github.com/joaopedromattos/LHStudies/tree/main/0002-add-two-numbers/) | Medium |
 | [0234-palindrome-linked-list](https://github.com/joaopedromattos/LHStudies/tree/main/0234-palindrome-linked-list/) | Easy |
 ## Two Pointers
 | Problem Name | Difficulty |
@@ -30,6 +31,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 ## Recursion
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0002-add-two-numbers](https://github.com/joaopedromattos/LHStudies/tree/main/0002-add-two-numbers/) | Medium |
 | [0234-palindrome-linked-list](https://github.com/joaopedromattos/LHStudies/tree/main/0234-palindrome-linked-list/) | Easy |
 ## Breadth-First Search
 | Problem Name | Difficulty |
@@ -64,5 +66,6 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 ## Math
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0002-add-two-numbers](https://github.com/joaopedromattos/LHStudies/tree/main/0002-add-two-numbers/) | Medium |
 | [0009-palindrome-number](https://github.com/joaopedromattos/LHStudies/tree/main/0009-palindrome-number/) | Easy |
 <!---LeetCode Topics End-->
