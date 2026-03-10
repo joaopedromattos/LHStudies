@@ -9,6 +9,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [0001-two-sum](https://github.com/joaopedromattos/LHStudies/tree/main/0001-two-sum/) | Easy |
 | [0121-best-time-to-buy-and-sell-stock](https://github.com/joaopedromattos/LHStudies/tree/main/0121-best-time-to-buy-and-sell-stock/) | Easy |
 | [0128-longest-consecutive-sequence](https://github.com/joaopedromattos/LHStudies/tree/main/0128-longest-consecutive-sequence/) | Medium |
+| [0135-candy](https://github.com/joaopedromattos/LHStudies/tree/main/0135-candy/) | Hard |
 | [0739-daily-temperatures](https://github.com/joaopedromattos/LHStudies/tree/main/0739-daily-temperatures/) | Medium |
 | [1091-shortest-path-in-binary-matrix](https://github.com/joaopedromattos/LHStudies/tree/main/1091-shortest-path-in-binary-matrix/) | Medium |
 | [1631-path-with-minimum-effort](https://github.com/joaopedromattos/LHStudies/tree/main/1631-path-with-minimum-effort/) | Medium |
@@ -76,4 +77,8 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0121-best-time-to-buy-and-sell-stock](https://github.com/joaopedromattos/LHStudies/tree/main/0121-best-time-to-buy-and-sell-stock/) | Easy |
+## Greedy
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0135-candy](https://github.com/joaopedromattos/LHStudies/tree/main/0135-candy/) | Hard |
 <!---LeetCode Topics End-->
