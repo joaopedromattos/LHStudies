@@ -7,6 +7,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0001-two-sum](https://github.com/joaopedromattos/LHStudies/tree/main/0001-two-sum/) | Easy |
+| [0128-longest-consecutive-sequence](https://github.com/joaopedromattos/LHStudies/tree/main/0128-longest-consecutive-sequence/) | Medium |
 | [0739-daily-temperatures](https://github.com/joaopedromattos/LHStudies/tree/main/0739-daily-temperatures/) | Medium |
 | [1091-shortest-path-in-binary-matrix](https://github.com/joaopedromattos/LHStudies/tree/main/1091-shortest-path-in-binary-matrix/) | Medium |
 | [1631-path-with-minimum-effort](https://github.com/joaopedromattos/LHStudies/tree/main/1631-path-with-minimum-effort/) | Medium |
@@ -54,6 +55,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 ## Union-Find
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0128-longest-consecutive-sequence](https://github.com/joaopedromattos/LHStudies/tree/main/0128-longest-consecutive-sequence/) | Medium |
 | [1631-path-with-minimum-effort](https://github.com/joaopedromattos/LHStudies/tree/main/1631-path-with-minimum-effort/) | Medium |
 ## Heap (Priority Queue)
 | Problem Name | Difficulty |
@@ -63,6 +65,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0001-two-sum](https://github.com/joaopedromattos/LHStudies/tree/main/0001-two-sum/) | Easy |
+| [0128-longest-consecutive-sequence](https://github.com/joaopedromattos/LHStudies/tree/main/0128-longest-consecutive-sequence/) | Medium |
 ## Math
 | Problem Name | Difficulty |
 | ------- | ------- |
